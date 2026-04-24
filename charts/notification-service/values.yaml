@@ -1,0 +1,39 @@
+replicaCount: 2
+
+image:
+  repository: likhithabhogyam/notification-service
+  tag: v1.0.0
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 8005
+  targetPort: 8005
+
+containerPort: 8005
+
+strategy:
+  maxUnavailable: 1
+  maxSurge: 1
+
+resources:
+  requests:
+    cpu: "100m"
+    memory: "128Mi"
+  limits:
+    cpu: "300m"
+    memory: "256Mi"
+
+config:
+  APP_ENV: production
+
+probes:
+  readiness:
+    path: /
+    initialDelaySeconds: 5
+    periodSeconds: 10
+
+  liveness:
+    path: /
+    initialDelaySeconds: 15
+    periodSeconds: 20

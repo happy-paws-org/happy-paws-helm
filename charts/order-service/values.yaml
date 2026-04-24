@@ -1,0 +1,42 @@
+replicaCount: 2
+
+image:
+  repository: likhithabhogyam/order-service
+  tag: v1.0.0
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 8004
+  targetPort: 8004
+
+containerPort: 8004
+
+strategy:
+  maxUnavailable: 1
+  maxSurge: 1
+
+resources:
+  requests:
+    cpu: "100m"
+    memory: "128Mi"
+  limits:
+    cpu: "300m"
+    memory: "256Mi"
+
+config:
+  APP_ENV: production
+
+secret:
+  DATABASE_URL: postgresql://postgres:postgres@postgres:5432/happypaws_users
+
+probes:
+  readiness:
+    path: /
+    initialDelaySeconds: 5
+    periodSeconds: 10
+
+  liveness:
+    path: /
+    initialDelaySeconds: 15
+    periodSeconds: 20

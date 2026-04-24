@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: user-service-config
+data:
+  ALGORITHM: {{ .Values.config.ALGORITHM | quote }}
+  ACCESS_TOKEN_EXPIRE_MINUTES: {{ .Values.config.ACCESS_TOKEN_EXPIRE_MINUTES | quote }}

@@ -1,0 +1,20 @@
+frontend-web:
+  replicaCount: 2
+
+api-gateway:
+  replicaCount: 2
+
+user-service:
+  replicaCount: 2
+
+pet-service:
+  replicaCount: 2
+
+appointment-service:
+  replicaCount: 2
+
+order-service:
+  replicaCount: 2
+
+notification-service:
+  replicaCount: 2

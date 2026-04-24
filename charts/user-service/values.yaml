@@ -1,0 +1,44 @@
+replicaCount: 2
+
+image:
+  repository: likhithabhogyam/user-service
+  tag: v1.0.0
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 8001
+  targetPort: 8001
+
+containerPort: 8001
+
+strategy:
+  maxUnavailable: 1
+  maxSurge: 1
+
+resources:
+  requests:
+    cpu: "100m"
+    memory: "128Mi"
+  limits:
+    cpu: "300m"
+    memory: "256Mi"
+
+config:
+  ALGORITHM: HS256
+  ACCESS_TOKEN_EXPIRE_MINUTES: "30"
+
+secret:
+  DATABASE_URL: postgresql://postgres:postgres@postgres:5432/happypaws_users
+  SECRET_KEY: your_super_secret_key_change_in_production
+
+probes:
+  readiness:
+    path: /
+    initialDelaySeconds: 5
+    periodSeconds: 10
+
+  liveness:
+    path: /
+    initialDelaySeconds: 15
+    periodSeconds: 20

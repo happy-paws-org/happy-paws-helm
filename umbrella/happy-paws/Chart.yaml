@@ -1,0 +1,43 @@
+apiVersion: v2
+name: happy-paws
+description: Happy Paws Full Platform Umbrella Chart
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
+
+dependencies:
+  - name: postgres
+    version: 0.1.0
+    repository: file://../../charts/postgres
+
+  - name: mongodb
+    version: 0.1.0
+    repository: file://../../charts/mongodb
+
+  - name: user-service
+    version: 0.1.0
+    repository: file://../../charts/user-service
+
+  - name: pet-service
+    version: 0.1.0
+    repository: file://../../charts/pet-service
+
+  - name: appointment-service
+    version: 0.1.0
+    repository: file://../../charts/appointment-service
+
+  - name: order-service
+    version: 0.1.0
+    repository: file://../../charts/order-service
+
+  - name: notification-service
+    version: 0.1.0
+    repository: file://../../charts/notification-service
+
+  - name: api-gateway
+    version: 0.1.0
+    repository: file://../../charts/api-gateway
+
+  - name: frontend-web
+    version: 0.1.0
+    repository: file://../../charts/frontend-web

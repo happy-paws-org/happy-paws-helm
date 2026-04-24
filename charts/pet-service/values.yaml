@@ -1,0 +1,42 @@
+replicaCount: 2
+
+image:
+  repository: likhithabhogyam/pet-service
+  tag: v1.0.0
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 8002
+  targetPort: 8002
+
+containerPort: 8002
+
+strategy:
+  maxUnavailable: 1
+  maxSurge: 1
+
+resources:
+  requests:
+    cpu: "100m"
+    memory: "128Mi"
+  limits:
+    cpu: "300m"
+    memory: "256Mi"
+
+config:
+  APP_ENV: production
+
+secret:
+  MONGO_URI: mongodb://admin:password@mongodb:27017/admin
+
+probes:
+  readiness:
+    path: /
+    initialDelaySeconds: 5
+    periodSeconds: 10
+
+  liveness:
+    path: /
+    initialDelaySeconds: 15
+    periodSeconds: 20

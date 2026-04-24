@@ -1,0 +1,28 @@
+frontend-web:
+  replicaCount: 3
+
+api-gateway:
+  replicaCount: 3
+
+user-service:
+  replicaCount: 3
+
+pet-service:
+  replicaCount: 3
+
+appointment-service:
+  replicaCount: 3
+
+order-service:
+  replicaCount: 3
+
+notification-service:
+  replicaCount: 3
+
+postgres:
+  storage:
+    size: 10Gi
+
+mongodb:
+  storage:
+    size: 10Gi

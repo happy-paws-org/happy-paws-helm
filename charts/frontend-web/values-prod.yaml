@@ -1,0 +1,12 @@
+replicaCount: 3
+resources:
+  requests:
+    cpu: "150m"
+    memory: "256Mi"
+  limits:
+    cpu: "300m"
+    memory: "512Mi"
+config:
+  VITE_APP_NAME: Happy Paws
+  VITE_ENV: production
+  VITE_API_GATEWAY_URL: /api
