@@ -26,3 +26,21 @@ postgres:
 mongodb:
   storage:
     size: 10Gi
+
+kgateway:
+  enabled: true
+
+  namespace: prod
+
+  gateway:
+    name: happy-paws-gateway
+    gatewayClassName: kgateway
+    listenerName: http
+    protocol: HTTP
+    port: 80
+
+  route:
+    name: happy-paws-route
+    hostnames:
+      - happypaws.com
+      - www.happypaws.com

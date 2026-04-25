@@ -24,3 +24,28 @@ order-service:
 
 notification-service:
   replicaCount: 2
+
+kgateway:
+  enabled: true
+
+  namespace: dev
+
+  gateway:
+    name: happy-paws-gateway
+    gatewayClassName: kgateway
+    listenerName: http
+    protocol: HTTP
+    port: 80
+
+  route:
+    name: happy-paws-route
+    hostnames: []
+
+  services:
+    apiGateway:
+      name: api-gateway
+      port: 8000
+
+    frontend:
+      name: frontend-web
+      port: 80
