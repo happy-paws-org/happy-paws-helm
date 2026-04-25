@@ -21,11 +21,11 @@ notification-service:
 
 postgres:
   storage:
-    size: 10Gi
+    size: 1Gi
 
 mongodb:
   storage:
-    size: 10Gi
+    size: 1Gi
 
 kgateway:
   enabled: true
