@@ -1,23 +1,23 @@
 frontend-web:
-  replicaCount: 3
+  replicaCount: 1
 
 api-gateway:
-  replicaCount: 3
+  replicaCount: 1
 
 user-service:
-  replicaCount: 3
+  replicaCount: 1
 
 pet-service:
-  replicaCount: 3
+  replicaCount: 1
 
 appointment-service:
-  replicaCount: 3
+  replicaCount: 1
 
 order-service:
-  replicaCount: 3
+  replicaCount: 1
 
 notification-service:
-  replicaCount: 3
+  replicaCount: 1
 
 postgres:
   storage:
