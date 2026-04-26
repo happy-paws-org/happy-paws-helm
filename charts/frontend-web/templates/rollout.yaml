@@ -1,15 +1,10 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
 metadata:
   name: frontend-web
+
 spec:
   replicas: {{ .Values.replicaCount }}
-
-  strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxUnavailable: {{ .Values.strategy.maxUnavailable }}
-      maxSurge: {{ .Values.strategy.maxSurge }}
 
   selector:
     matchLabels:
@@ -56,3 +51,9 @@ spec:
             port: {{ .Values.containerPort }}
           initialDelaySeconds: {{ .Values.probes.liveness.initialDelaySeconds }}
           periodSeconds: {{ .Values.probes.liveness.periodSeconds }}
+
+  strategy:
+    blueGreen:
+      activeService: frontend-web-active
+      previewService: frontend-web-preview
+      autoPromotionEnabled: false
