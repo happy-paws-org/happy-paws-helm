@@ -1,13 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: frontend-web-preview
-
+  name: frontend-web
 spec:
-  type: ClusterIP
+  type: {{ .Values.service.type }}
   selector:
     app: frontend-web
-
   ports:
     - port: {{ .Values.service.port }}
       targetPort: {{ .Values.service.targetPort }}
